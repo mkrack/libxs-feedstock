@@ -25,12 +25,6 @@ requirements:
     - ${{ compiler("fortran") }}
     - cmake >=3.13 
     - make
-  host:
-    - libblas
-    - "openblas * *openmp_*"
-  run:
-    - libblas
-    - "openblas * *openmp_*"
 
 tests:
   - package_contents:
