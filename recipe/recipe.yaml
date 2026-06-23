@@ -12,7 +12,7 @@ source:
     sha256: a669406336a25f270a70d161f039b05cd1c28522c46229df7f2797551855d59c
 
 build:
-  number: 1
+  number: 2
   script: build.sh
   skip:
     - osx
@@ -23,13 +23,16 @@ requirements:
     - ${{ compiler("c") }}
     - ${{ compiler("cxx") }}
     - ${{ compiler("fortran") }}
-    - cmake >=3.13 
+    - cmake >=3.13
     - make
 
 tests:
   - package_contents:
       lib:
-        - libxs
+        - libxs.so
+        - libxs.a
+      include:
+        - libxs/libxs.h
 
 about:
   homepage: https://libxs.readthedocs.io/en/latest
