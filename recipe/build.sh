@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ex
 
-# Build LIBXS
+# Build shared LIBXS library
 cmake -B build -S . \
   ${CMAKE_ARGS} \
   -DBUILD_SHARED_LIBS="ON" \
