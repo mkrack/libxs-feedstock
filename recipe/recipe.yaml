@@ -1,18 +1,19 @@
 schema_version: 1
 
 context:
-  version: "20260622"
+  name: libxs
+  version: 1.0.0
 
 package:
-  name: libxs
+  name: ${{ name }}
   version: ${{ version }}
 
 source:
-  - url: https://github.com/hfp/libxs/archive/2a80a4d7b9d080da5022aa3bb36f00b539ac8c0e.tar.gz
-    sha256: a669406336a25f270a70d161f039b05cd1c28522c46229df7f2797551855d59c
+  - url: https://github.com/hfp/${{ name }}/releases/download/${{ version }}/${{ name }}-${{ version }}.tar.gz
+    sha256: de26f50cb986a2f0e4f92c0eb489d40a44f7e4c5acd22751a6cfa2829dabd04d
 
 build:
-  number: 2
+  number: 0
   script: build.sh
   skip:
     - osx
@@ -28,16 +29,14 @@ requirements:
 
 tests:
   - package_contents:
-      lib:
-        - libxs.so
-        - libxs.a
       include:
-        - libxs/libxs.h
+        - ${{ name }}/${{ name }}.h
+      lib:
+        - ${{ name }}
 
 about:
   homepage: https://libxs.readthedocs.io/en/latest
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE.md
   summary: Portable C library providing building blocks for memory operations
   description: |
