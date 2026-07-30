@@ -1,8 +1,8 @@
 schema_version: 1
 
 context:
-  name: libxs
-  version: 1.0.0
+  name: "libxs"
+  version: "1.0.0"
 
 package:
   name: ${{ name }}
@@ -13,10 +13,9 @@ source:
     sha256: de26f50cb986a2f0e4f92c0eb489d40a44f7e4c5acd22751a6cfa2829dabd04d
 
 build:
-  number: 0
+  number: 1
   script: build.sh
   skip:
-    - osx
     - win
 
 requirements:
@@ -25,12 +24,14 @@ requirements:
     - ${{ compiler("cxx") }}
     - ${{ compiler("fortran") }}
     - cmake >=3.13
-    - make
+    - ninja >=1.13
 
 tests:
   - package_contents:
       include:
+        - ${{ name }}/${{ name }}.f
         - ${{ name }}/${{ name }}.h
+        - ${{ name }}/${{ name }}.mod
       lib:
         - ${{ name }}
 
